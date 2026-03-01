@@ -1,111 +1,168 @@
 # LOG650 Proposal
 
 ## Project Title
-Optimisation of Spare Part Inventory and Refurbishment Planning for MAN Marine Engines in Cruise Ship Operations
 
-## Area
-Inventory management and reverse logistics in a maritime supply chain.
+Comparative Analysis of LTSA vs. Non-LTSA Strategies for MAN Marine Engines in Cruise Operations
 
-This project focuses on inventory management and reverse logistics for repairable spare parts used in MAN marine engines on cruise ships operated by Viking Cruise Lines and managed by Wilhelmsen Ship Management (WSM).
+## Area of Study
 
-Marine engine spare parts are critical assets. A lack of available parts can cause costly downtime and lost revenue in cruise ship operations. At the same time, holding excessive stock is expensive. This creates a classical logistics trade-off between availability and cost, which is well suited for quantitative optimisation.
+This project is situated within supply chain analysis and optimisation, inventory management, and risk and robustness in maritime supply chains.
 
----
+The study examines strategic maintenance and spare parts management decisions for MAN marine engines installed on cruise vessels operated by Viking Cruise Lines and technically managed by Wilhelmsen Ship Management (WSM).
+
+Marine propulsion engines are mission-critical assets. Their reliability directly affects safety, itinerary stability, customer satisfaction, and revenue generation. Unplanned downtime can result in substantial financial losses and operational disruption.
+
+The strategic choice between operating under a Long-Term Service Agreement (LTSA) with MAN Energy Solutions and managing maintenance independently under a non-LTSA strategy represents a significant operational and financial decision. This project investigates how these two contractual structures influence lifecycle cost, operational availability, and financial risk exposure over time.
 
 ## Problem Statement
-How many critical MAN marine engine spare parts should Wilhelmsen Ship Management keep in central stock in Amsterdam, and when should parts be sent for refurbishment at MAN in order to minimise total logistics cost while maintaining a required service level for cruise ship operations?
 
-The problem is motivated by WSM’s belief that the current spare-part system may be inefficient. They may either hold too much inventory or operate with an inefficient refurbishment process, while still risking running out of critical parts.
+The central research question guiding this study is:
 
----
+**How does operating MAN marine engines under an LTSA agreement compared to a non-LTSA strategy affect total lifecycle cost, operational availability, and financial risk exposure in cruise operations?**
 
-## Data Foundation
-The project will be based on real operational data provided by WSM through Geir Terje Nevøy.
+The problem evaluates quantifiable outcomes, including:
 
-A dedicated data-collection meeting is scheduled where available datasets, system structure, and practical constraints will be reviewed.
+- Total lifecycle cost  
+- Availability percentage  
+- Downtime frequency  
+- Cost variability  
 
-Expected data includes (subject to availability):
+The purpose of the study is to develop a quantitative decision-support model that enables systematic comparison of the two strategies under uncertainty.
 
-- Historical failures of MAN engine parts  
-- Spare-part usage and replacement history  
-- Refurbishment lead times at MAN  
-- Current stock levels  
-- Costs of new parts and refurbishments  
-- Estimated cost of ship downtime  
+## Model Formulation
 
-If some elements are missing, realistic simulation will be used to complement the dataset.
+The problem is translated into a stochastic lifecycle cost and availability model built on operational and financial data.
 
----
+### Input Parameters
 
-## Model
-The system will be modelled as a repairable spare-parts inventory system.
+The model incorporates:
 
-### Parameters
-- Failure rates of engine parts  
+- Failure rate distributions  
+- Mean time between failures (MTBF)  
 - Repair lead times  
-- Inventory holding costs  
-- New-part and refurbishment costs  
-- Downtime costs  
+- Spare-part unit costs  
+- Inventory holding cost rates  
+- Downtime cost per hour  
+- Overhaul intervals  
+- Refurbishment cycle costs  
+- LTSA fee structures  
+
+These parameters describe the technical and economic behaviour of the engine system under both strategies.
 
 ### Decision Variables
-- Number of spare parts to keep in stock  
-- When to send parts for refurbishment  
-- Replenishment policy  
 
-### Objective (KPI)
+Depending on scope refinement, decision variables may include:
+
+- Contract strategy selection (LTSA vs. non-LTSA)  
+- Spare-part inventory levels  
+- Safety stock levels  
+- Refurbishment timing  
+- Preventive maintenance intervals  
+
+### Objective Function
+
 Minimise:
 
-Total cost = Inventory cost + Refurbishment cost + Purchase cost + Downtime cost  
+Expected total lifecycle cost over a defined planning horizon
 
 Subject to:
 
-Service level ≥ Target value (e.g. 95–99%)
+- Availability ≥ required service level  
+- Maintenance and overhaul constraints  
+- Contractual conditions  
 
----
+In addition to expected cost minimisation, the model evaluates variability in cost outcomes to assess financial risk exposure under each strategic alternative.
 
 ## Process
-The LOG650 five-step process will be followed:
 
-1. Data Collection  
-   Collect real data from WSM and MAN.
+The project follows a structured five-step quantitative process.
 
-2. Assumption Validation  
-   Analyse distributions, failure patterns, and lead-time behaviour.
+### 1. Data Collection
 
-3. Solution Development  
-   Build a quantitative model in Python to calculate optimal stock and refurbishment strategies.
+Operational data will be obtained from WSM’s Planned Maintenance System and spare-parts management systems, including:
 
-4. Solution Testing  
-   Perform sensitivity analysis and scenario testing.
+- Maintenance history  
+- Overhaul intervals  
+- Spare-part consumption patterns  
+- Refurbishment cycles  
+- Lead times  
+- Cost structures  
+- Downtime records  
 
-5. Implementation  
-   Translate results into practical recommendations for Wilhelmsen.
+Data quality and completeness will be evaluated before modelling.
 
----
+### 2. Assumption Validation
+
+Statistical analysis will be conducted to assess:
+
+- Failure distributions  
+- Cost behaviour  
+- Lead-time characteristics  
+
+Goodness-of-fit testing and exploratory data analysis will ensure modelling assumptions reflect empirical patterns.
+
+### 3. Model Implementation
+
+The model will be implemented in Python.
+
+Due to the stochastic nature of failures and repair processes, Monte Carlo simulation will be used to evaluate lifecycle cost and availability under both LTSA and non-LTSA scenarios.
+
+Simulation is selected because closed-form analytical solutions are not realistic for complex lifecycle systems with uncertainty-driven cost structures.
+
+### 4. Validation and Sensitivity Analysis
+
+Sensitivity analysis will evaluate how changes in key parameters (e.g., failure rates, downtime costs, lead times) influence outcomes.
+
+Scenario testing and limited backtesting using historical data will be conducted to assess robustness.
+
+### 5. Managerial Application
+
+Results will be translated into structured managerial recommendations for Wilhelmsen Ship Management.
+
+The modelling framework is intended to function as a reusable decision-support tool for future vessels, engine types, and contract evaluations.
 
 ## Methods
-- Inventory models for repairable spare parts  
-- Simulation (Discrete Event / Monte Carlo)  
-- Optimisation techniques  
-- Machine learning and AI for parameter estimation, simulation, and optimisation  
 
----
+The methodological approach integrates:
 
-## Role of AI
-AI will be used to:
+- Lifecycle cost analysis  
+- Reliability and availability modelling  
+- Monte Carlo simulation  
+- Sensitivity analysis  
+- Scenario comparison  
 
-- Analyse WSM datasets  
-- Estimate failure and lead-time distributions  
-- Implement simulation and optimisation models  
-- Generate visualisations and KPIs  
+Statistical estimation techniques will be used to calibrate model parameters from empirical data.
 
-The project team will be responsible for assumptions, model structure, validation, and interpretation of results.
+The framework evaluates both expected cost levels and cost variability to assess financial risk allocation between strategies.
 
----
+## Role of Artificial Intelligence
+
+Artificial intelligence will be used as an analytical support tool.
+
+AI tools may assist with:
+
+- Data preprocessing  
+- Statistical parameter estimation  
+- Generation of Python simulation code  
+- Automation of sensitivity analysis  
+- Visualisation of results  
+
+All modelling assumptions, validation procedures, and interpretation of results remain the responsibility of the author. AI is used to enhance analytical efficiency, not to replace critical judgement.
 
 ## Expected Contribution
-The project will provide WSM with:
 
-- A data-driven spare-part planning model  
-- Quantified trade-offs between cost and availability  
-- A framework that can be reused and updated with new data
+### Academic Contribution
+
+The study contributes to understanding how maintenance contract structures influence lifecycle economics and operational performance in capital-intensive maritime systems.
+
+It integrates stochastic lifecycle modelling with contract-based strategy evaluation in a supply chain context.
+
+### Practical Contribution
+
+The project provides Wilhelmsen Ship Management with:
+
+- A structured quantitative comparison of LTSA and non-LTSA strategies  
+- Clear visibility of cost implications and availability trade-offs  
+- Assessment of financial risk exposure  
+
+The modelling framework can be reused and adapted for future contract negotiations and strategic evaluations.

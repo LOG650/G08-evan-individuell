@@ -1,0 +1,130 @@
+# Phase 2 – Project Planning
+
+**Project:** Comparative Analysis of LTSA vs. Non-LTSA Strategies for MAN Marine Engines in Cruise Operations
+
+---
+
+## 1. Model Requirements
+
+The purpose of the model is to quantitatively compare two maintenance and contract strategies for marine propulsion engines:
+
+- Operating under a **Long-Term Service Agreement (LTSA)**
+- Operating under an **independent non-LTSA maintenance strategy**
+
+### Functional Requirements
+
+The model must be able to:
+
+- Estimate total lifecycle cost for both LTSA and non-LTSA strategies over a defined planning horizon
+- Model engine reliability behaviour using failure distributions and maintenance events
+- Estimate operational availability of the propulsion system
+- Incorporate spare-part inventory costs and refurbishment cycles
+- Evaluate downtime costs resulting from failures and maintenance activities
+- Perform Monte Carlo simulations to capture stochastic behaviour in failures, repair times, and cost variability
+- Compare expected cost and cost variability between the two strategies
+- Perform sensitivity analysis on key parameters such as failure rate, downtime cost, lead times, and inventory levels
+
+### Non-Functional Requirements
+
+The model must:
+
+- Be implemented in Python
+- Be able to process real operational data from Wilhelmsen Ship Management systems
+- Produce interpretable outputs such as cost distributions, availability metrics, and scenario comparisons
+- Be transparent and reproducible so that modelling assumptions and results can be verified
+
+---
+
+## 2. Research Plan
+
+The research plan describes how the study will be conducted and which analytical methods will be used.
+
+### Planned Data Sources
+
+Operational and cost data will be obtained from Wilhelmsen Ship Management systems where possible. Expected sources include:
+
+- Planned Maintenance System (PMS) for maintenance history and overhaul schedules
+- Spare-parts management systems for consumption data and inventory records
+- Procurement and financial records for spare-part costs and maintenance costs
+- Service documentation for repair lead times and refurbishment cycles
+- Contract documentation describing LTSA fee structures
+
+The data will provide parameters such as:
+
+- Failure rate distributions
+- Mean Time Between Failures (MTBF)
+- Repair lead times
+- Spare part unit costs
+- Inventory holding cost rates
+- Downtime cost per hour
+- Overhaul intervals
+- Refurbishment costs
+- LTSA contract fees
+
+If complete operational data is not available for all parameters, reasonable estimates will be derived from:
+
+- Literature
+- Expert input (WSM employees)
+- Scenario assumptions
+
+---
+
+## 3. Modelling Approach
+
+The analysis will be based on a stochastic lifecycle cost model representing the technical and economic behaviour of the engine system.
+
+The model will include:
+
+- Reliability modelling for engine failure behaviour
+- Maintenance and refurbishment cycles
+- Spare-part inventory cost structure
+- Downtime cost effects
+- Contract fee structures for LTSA arrangements
+
+Due to the stochastic nature of failure and repair times, **Monte Carlo simulation** will be used to estimate lifecycle cost and availability outcomes.
+
+The simulation will generate **distributions of cost and availability outcomes** rather than single deterministic values. This allows evaluation of both expected cost and financial risk exposure under each strategic alternative.
+
+Sensitivity analysis will be performed to test how variations in key parameters influence results.
+
+---
+
+## 4. Project Schedule
+
+| Phase | Activity |
+|------|----------|
+| Literature review | Review research on lifecycle cost modelling, reliability analysis, and maritime maintenance strategies |
+| Data acquisition | Obtain operational and cost data from WSM systems |
+| Data preparation | Clean and structure data for analysis |
+| Parameter estimation | Estimate failure distributions, repair times, and cost parameters |
+| Model development | Build lifecycle cost simulation model in Python |
+| Simulation experiments | Run Monte Carlo simulations for LTSA and non-LTSA scenarios |
+| Sensitivity analysis | Test model robustness to parameter changes |
+| Results analysis | Compare lifecycle cost, availability, and risk outcomes |
+| Thesis writing | Document methodology, results, and conclusions |
+
+---
+
+## 5. Risk Analysis
+
+| Risk | Impact | Mitigation |
+|------|--------|-----------|
+| Limited access to WSM data | Model parameters cannot be fully calibrated | Use scenario-based estimates or anonymized aggregated data |
+| Incomplete maintenance history | Uncertain failure distributions | Apply statistical estimation and sensitivity analysis |
+| Model complexity becomes too high | Delays in implementation | Simplify model scope and focus on key parameters |
+| Confidentiality restrictions | Certain values cannot be published | Present results in normalized or indexed form |
+| Time constraints during modelling phase | Reduced analysis depth | Prioritize core model functionality first |
+
+---
+
+## 6. Expected Outcome of Phase 2
+
+At the end of Phase 2, the project will have:
+
+- A clearly defined model structure
+- A documented research methodology
+- Identified data sources and required parameters
+- A project schedule for the remaining thesis work
+- A risk management plan
+
+This planning phase establishes the foundation required to proceed to **Phase 3**, where data collection, model implementation, and simulation analysis will be conducted.
